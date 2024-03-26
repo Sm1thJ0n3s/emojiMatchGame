@@ -14,17 +14,19 @@ struct UndercoverView: View {
     var flipped: Bool
     
     var body: some View {
-        
+        ZStack{
             Rectangle()
                 .fill(flipped ? Color.white.opacity(0.01) : .blue)
-                .frame(width: 90, height: 90)
+                .frame(width: 80, height: 80)
                 .cornerRadius(20)
             
             if flipped {
                 Text(emoji)
-                    .font(.system(size: 30))
+                    .font(.largeTitle)
             }
         }
+            
+    }
 }
 
 #Preview {

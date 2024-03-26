@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FinishedView: View {
+    
     @State var showSeconds = true
     
     var body: some View {
@@ -20,7 +21,7 @@ struct FinishedView: View {
                         TimelineView(.periodic(from: Date(), by: 1)) { context in TimeTestView(date: context.date, showSeconds: showSeconds)
                         }
                         Text("")
-                            .frame(width:120, height:0)
+                            .frame(width:280, height:0)
                     }
                     
                     Text("Game Over")

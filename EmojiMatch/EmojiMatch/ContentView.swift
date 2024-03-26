@@ -16,7 +16,7 @@ struct ContentView: View {
     
     @State var emojis = ["😀", "😀" ,"😁", "😁", "😂", "😂", "🤣", "🤣", "😃", "😃", "😄", "😄",].shuffled()
     
-    @State var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 10), count: 3)
+    let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: -135, alignment: nil), count: 3)
     
     @State private var pickOne: Int = -1
     
@@ -35,6 +35,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             ZStack {
+                    Image("contentBackground")
                 VStack {
                     TimelineView(.periodic(from: Date(), by: 1)) { context in TimeTestView(date: context.date, showSeconds: showSeconds)
                     }
@@ -146,11 +147,11 @@ struct ContentView: View {
     }
     
     func reset () {
-        score = 0
         for i in emojis.indices {
             cardsFlipped[i] = false
         }
         if health == 0 {
+            totalScore -= score
             if level < 6 {
                 health = 10
             } else if level > 5 && level < 11 {
@@ -169,6 +170,7 @@ struct ContentView: View {
                 health = 12
             }
         }
+        score = 0
         emojis.shuffle()
         gameFinished = false
     }
